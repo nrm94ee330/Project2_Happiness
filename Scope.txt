@@ -1,0 +1,8 @@
+1. Load csv data by year into mysql (using the first project)
+2. create flask api routes for year
+3. world happiness scatter plots by factor, correlation mattrix of factors
+
+
+4. plot the various scores on a map by country
+5. Create a tablaeu dashboard
+6. create trend lines
