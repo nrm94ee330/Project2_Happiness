@@ -148,13 +148,14 @@ def samples(sample):
         "Country": sample_data.Country.tolist(),
         "Happiness_Rank": sample_data.Happiness_Rank.values.tolist(),
         "Happiness_Score": sample_data.Happiness_Score.tolist(),
-        "Economy__GDP_per_Capita_": sample_data.Happiness_Score.tolist(),
-        "Family": sample_data.Happiness_Score.tolist(),
-        "Health__Life_Expectancy_": sample_data.Happiness_Score.tolist(),
-        "Freedom": sample_data.Happiness_Score.tolist(),
-        "Generosity": sample_data.Happiness_Score.tolist(),
-        "Trust__Government_Corruption_": sample_data.Happiness_Score.tolist(),
-        "Dystopia_Residual": sample_data.Happiness_Score.tolist(),
+        "Economy__GDP_per_Capita_": sample_data.Economy__GDP_per_Capita_.tolist(),
+        "Family": sample_data.Family.tolist(),
+        "Health__Life_Expectancy_": sample_data.Health__Life_Expectancy_.tolist(),
+        "Freedom": sample_data.Freedom.tolist(),
+        "Generosity": sample_data.Generosity.tolist(),
+        "Trust__Government_Corruption_": sample_data.Trust__Government_Corruption_.tolist(),
+        "Dystopia_Residual": sample_data.Dystopia_Residual.tolist(),
+        "year": sample_data.year.tolist(),
     }
     return jsonify(data)
 
