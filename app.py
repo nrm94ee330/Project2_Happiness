@@ -42,7 +42,7 @@ Base.prepare(engine, reflect=True)
 
 Years_Data = Base.classes.happiness_data
 Years = Base.classes.years
-
+Variables = Base.classes.variables
 
 @app.route("/")
 def index():
@@ -57,14 +57,17 @@ def years():
 
     # Use Pandas to perform the sql query
     stmt = db.session.query(Years.year).statement
-    #print(stmt)
     df = pd.read_sql_query(stmt,engine)
-    
-    #Return a list of the column names (sample names)
-    #print(df)
     df["year"]=df["year"].astype(float)
     return jsonify(df.to_dict(orient="records"))
 
+@app.route("/vars")
+def variables():
+    """Return a list of sample names."""
+    stmt = db.session.query(Variables.vars).statement
+    df = pd.read_sql_query(stmt,engine)
+    df["vars"]=df["vars"]
+    return jsonify(df.to_dict(orient="records"))
 
 @app.route("/years0/<year>")
 def year_data(year):
@@ -141,7 +144,7 @@ def samples(sample):
     # Filter the data based on the sample number and
     # only keep rows with values above 1
     #sample_data = df.loc[df[sample] > 1, ["Country", "otu_label", sample]]
-    sample_data=df
+    sample_data=df.sort_values(by=['Happiness_Rank'])
     #sample_data = df.loc[df[sample] > 1, ["Country", "otu_label", sample]]
     # Format the data to send as json
     data = {
